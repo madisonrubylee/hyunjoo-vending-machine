@@ -1,0 +1,261 @@
+body {
+  font-family: sans-serif;
+  padding: 20px;
+  background-color: #f0f0f0;
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vending-machine {
+  display: flex;
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.machine-section {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  width: 400px;
+}
+
+.machine-section h2 {
+  margin-top: 0;
+  color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.drinks-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.drink-item {
+  position: relative;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  padding-bottom: 30px;
+  text-align: center;
+  transition: all 0.3s;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.drink-item.available {
+  cursor: pointer;
+  opacity: 1;
+  box-shadow: 0 0 0 0 rgba(255, 68, 68, 0.4);
+  animation: pulse 2s infinite;
+}
+
+.drink-item::after {
+  content: "";
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #ddd;
+  transition: background-color 0.3s;
+}
+
+.drink-item.available::after {
+  background-color: #ff4444;
+}
+
+.drink-item.available:hover {
+  transform: translateY(-2px);
+  border-color: #ff4444;
+}
+
+.drink-item:active {
+  transform: translateY(0);
+}
+
+.drink-info {
+  margin-bottom: 15px;
+}
+
+.drink-name {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.drink-price {
+  color: #666;
+}
+
+.payment-panel {
+  margin-top: 20px;
+}
+
+.bill-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.bill-buttons button {
+  padding: 8px;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 5px;
+  background: rgb(129, 105, 255);
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.bill-buttons button:hover {
+  background: rgb(116, 94, 229);
+}
+
+.balance-display {
+  position: relative;
+  background: #f8f9fa;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+.return-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 68, 68, 0.9);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  animation: slideUp 1.5s ease-out forwards;
+  pointer-events: none;
+  text-align: center;
+  width: 80%;
+}
+
+.return-sub-message {
+  font-size: 0.8em;
+  margin-top: 4px;
+  opacity: 0.9;
+}
+
+.log {
+  flex-grow: 1;
+  margin-top: 20px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  height: 400px;
+  overflow-y: auto;
+  white-space: pre-line;
+  line-height: 1.5;
+  font-size: 0.9rem;
+  border: 1px solid #eee;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 68, 68, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 68, 68, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 68, 68, 0);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -40%);
+  }
+  20% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+  80% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+}
+
+@media screen and (max-width: 900px) {
+  body {
+    padding: 10px;
+    align-items: flex-start;
+  }
+
+  .vending-machine {
+    flex-direction: column;
+    width: 100%;
+    max-width: 500px;
+    padding: 15px;
+    gap: 20px;
+  }
+
+  .machine-section {
+    width: auto;
+    min-width: 0;
+    padding: 15px;
+  }
+
+  .drinks-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .log {
+    height: 300px;
+  }
+
+  .bill-buttons {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .vending-machine {
+    padding: 10px;
+  }
+
+  .machine-section {
+    padding: 10px;
+  }
+
+  .drinks-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .bill-buttons {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .bill-buttons button {
+    padding: 6px;
+    font-size: 0.8rem;
+  }
+}
