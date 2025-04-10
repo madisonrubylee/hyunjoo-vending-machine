@@ -55,6 +55,7 @@ body {
   transition: all 0.3s;
   cursor: not-allowed;
   opacity: 0.7;
+  background: white;
 }
 
 .drink-item.available {
@@ -86,7 +87,7 @@ body {
   border-color: #ff4444;
 }
 
-.drink-item:active {
+.drink-item.available:active {
   transform: translateY(0);
 }
 
@@ -203,6 +204,25 @@ body {
   }
 }
 
+@keyframes dispense {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(10px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.drink-item.dispensing {
+  animation: dispense 1s ease-in-out;
+}
+
 @media screen and (max-width: 900px) {
   body {
     padding: 10px;
@@ -257,5 +277,54 @@ body {
   .bill-buttons button {
     padding: 6px;
     font-size: 0.8rem;
+  }
+}
+
+/* 음료 배출구 스타일 */
+.dispenser-slot {
+  margin-top: 20px;
+  position: relative;
+  height: 80px;
+  background: #e0e0e0;
+  border-radius: 8px;
+  padding: 10px;
+  border: 2px solid #ccc;
+}
+
+.slot-door {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 10px;
+  background: #999;
+  border-radius: 0 0 8px 8px;
+}
+
+.dispensed-items {
+  position: relative;
+  top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  min-height: 40px;
+}
+
+.dispensed-item {
+  font-size: 1.5rem;
+  animation: dropIn 0.5s ease-in-out;
+}
+
+@keyframes dropIn {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
