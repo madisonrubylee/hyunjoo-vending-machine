@@ -1,0 +1,13 @@
+{
+  "name": "vending-machine",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "start": "serve ."
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3",
+    "vite": "^5.0.0"
+  }
+}
