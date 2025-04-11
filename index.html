@@ -31,12 +31,21 @@
             </div>
             <div class="balance-display">
               현재 잔액: <span id="currentBalance">0</span>원
+              <button onclick="returnChange()" class="return-button">
+                현금 반환
+              </button>
             </div>
           </div>
 
           <div id="cardInput" style="display: none">
-            <button onclick="startProcess()" class="payment-button">
-              카드 결제하기
+            <button onclick="insertCard()" class="payment-button">
+              카드 투입하기
+            </button>
+            <button
+              onclick="returnCard()"
+              class="return-button"
+              style="margin-top: 10px">
+              카드 반환
             </button>
           </div>
 
