@@ -1,9 +1,11 @@
 import { VendingMachine } from "@/classes/VendingMachine";
-import { handlePaymentTypeChange } from "./payment";
-import { initCashHandlers } from "./cash";
-import { initCardHandlers } from "./card";
-import { initDrinkHandlers } from "./drinks";
-import { updateUI } from "@/ui/updateUI";
+import {
+  handlePaymentTypeChange,
+  initCashHandlers,
+  initCardHandlers,
+  initDrinkHandlers,
+} from "./index";
+import { updateUI } from "@/utils/ui";
 
 export function initializeApp(vm: VendingMachine) {
   document
