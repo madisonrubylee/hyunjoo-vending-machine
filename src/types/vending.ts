@@ -1,5 +1,7 @@
 export type PaymentType = "cash" | "card";
 export type DrinkInventory = { [key: string]: number };
+export type DrinkType = "COKE" | "WATER" | "COFFEE";
+
 export type DrinkInfo = {
   name: string;
   image: string;
