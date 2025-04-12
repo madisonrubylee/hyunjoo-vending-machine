@@ -154,6 +154,7 @@ body {
 }
 
 .return-message {
+  z-index: 1000;
   position: absolute;
   top: 50%;
   left: 50%;
