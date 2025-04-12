@@ -1,0 +1,2 @@
+export const DEFAULT_CARD_BALANCE = 10000;
+export const CARD_APPROVAL_PROBABILITY = 0.8;
