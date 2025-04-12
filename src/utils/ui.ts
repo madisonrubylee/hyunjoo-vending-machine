@@ -1,5 +1,6 @@
 import { VendingMachine } from "@/classes/VendingMachine";
 import { DRINK_EMOJIS } from "@/constants";
+import { formatCurrency } from "@/utils/format";
 
 export function showReturnMessage(
   amount: number,
@@ -14,10 +15,10 @@ export function showReturnMessage(
     message.textContent = "카드가 반환되었습니다";
     message.style.background = "rgba(67, 160, 71, 0.9)";
   } else if (isChange) {
-    message.textContent = `${amount}원이 반환되었습니다`;
+    message.textContent = `${formatCurrency(amount)}원이 반환되었습니다`;
     message.style.background = "rgba(67, 160, 71, 0.9)";
   } else {
-    message.textContent = `${amount}원권은 사용할 수 없습니다`;
+    message.textContent = `${formatCurrency(amount)}원권은 사용할 수 없습니다`;
   }
 
   balanceDisplay?.appendChild(message);
@@ -49,7 +50,7 @@ export function updateUI(vm: VendingMachine): void {
   const currentBalance = document.getElementById("currentBalance");
 
   if (inventoryStatus) {
-    vm.getInventoryStatus();
+    vm.getInventory();
   }
 
   if (currentBalance) {
@@ -73,5 +74,3 @@ function addDispensedDrink(drinkName: string): void {
     dispenserEl.removeChild(dispenserEl.children[0]);
   }
 }
-
-// ... 나머지 UI 관련 함수들

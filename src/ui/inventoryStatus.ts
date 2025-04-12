@@ -1,5 +1,6 @@
 import { VendingMachine } from "@/classes/VendingMachine";
 import { DRINK_EMOJIS, DRINKS, DrinkType } from "@/constants";
+import { formatCurrency } from "@/utils/format";
 
 export function inventoryStatus(vm: VendingMachine) {
   const el = document.getElementById("inventoryStatus");
@@ -17,7 +18,7 @@ export function inventoryStatus(vm: VendingMachine) {
         }" data-drink="${name}">
           <div class="drink-image">${emoji}</div>
           <div class="drink-name">${name}</div>
-          <div class="drink-price">${price}원</div>
+          <div class="drink-price">${formatCurrency(price)}원</div>
         </div>
       `;
     })
