@@ -14,12 +14,21 @@ export function handlePaymentTypeChange(vm: VendingMachine) {
       return;
     }
 
+    // 결제 방식 변경 시 PaymentManager에도 알려줌
+    vm.setPaymentType(isCash ? "cash" : "card");
+
     const cashInput = document.getElementById("cashInput");
     const cardInput = document.getElementById("cardInput");
 
     if (cashInput && cardInput) {
       cashInput.style.display = isCash ? "block" : "none";
       cardInput.style.display = isCash ? "none" : "block";
+
+      // 배출구 초기화
+      const dispenserEl = document.getElementById("dispensedItems");
+      if (dispenserEl) {
+        dispenserEl.innerHTML = "";
+      }
     }
   };
 }

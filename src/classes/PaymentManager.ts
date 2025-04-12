@@ -13,7 +13,8 @@ export class PaymentManager {
 
   setPaymentType(type: PaymentType): void {
     this.paymentType = type;
-    if (type === "card") this.pendingChange = 0;
+    this.balance = 0;
+    this.pendingChange = 0;
   }
 
   insertCash(amount: number): boolean {
@@ -32,7 +33,7 @@ export class PaymentManager {
 
     if (approved) {
       this.balance = DEFAULT_CARD_BALANCE;
-      this.setPaymentType("card");
+      this.paymentType = "card";
       log("카드 승인 성공");
     } else {
       log("카드 승인 실패");

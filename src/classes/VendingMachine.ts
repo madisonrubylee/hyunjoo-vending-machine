@@ -24,6 +24,7 @@ export class VendingMachine {
 
   purchase(drinkName: DrinkType): boolean {
     const price = DRINKS[drinkName];
+    const paymentType = this.paymentManager.getPaymentType();
 
     if (!this.inventoryManager.hasStock(drinkName)) {
       log(`${drinkName} 품절`);
@@ -37,14 +38,14 @@ export class VendingMachine {
 
     this.inventoryManager.decreaseInventory(drinkName);
 
-    if (this.paymentManager.getPaymentType() === "card") {
+    if (paymentType === "card") {
       log(`${drinkName} 제공 완료`);
       this.paymentManager.resetBalance();
       return true;
     }
 
+    // 현금 결제 처리
     const change = this.paymentManager.getBalance() - price;
-
     if (!this.paymentManager.canMakeChange(change)) {
       this.inventoryManager.increaseInventory(drinkName);
       log("잔돈 반환이 불가능합니다");
@@ -86,5 +87,9 @@ export class VendingMachine {
 
   getInventory(): DrinkInventory {
     return this.inventoryManager.getInventory();
+  }
+
+  resetBalance(): void {
+    this.paymentManager.resetBalance();
   }
 }

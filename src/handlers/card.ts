@@ -1,7 +1,6 @@
 import { VendingMachine } from "@/classes/VendingMachine";
 import { updateUI } from "@/ui/updateUI";
 import { updateDrinkSelectionUI } from "@/ui/drinkUI";
-import { showPurchaseSuccess } from "@/ui/messages";
 import { DRINKS } from "@/constants";
 import { log } from "@/utils/log";
 

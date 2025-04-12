@@ -16,7 +16,8 @@ export function initDrinkHandlers(vm: VendingMachine) {
     const success = vm.purchase(drinkName as any);
     if (success) {
       showPurchaseSuccess(drinkName);
-      if (vm.getPaymentType() === "card") {
+      const paymentType = vm.getPaymentType();
+      if (paymentType === "card" && vm.getBalance() === 0) {
         log("카드가 반환되었습니다.");
       }
       updateUI(vm);
