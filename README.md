@@ -16,7 +16,7 @@
 1. 레포지토리 클론
 
    ```bash
-   git clone https://github.com/yourusername/hyunjoo-vending-machine.git
+   git clone https://github.com/madisonrubylee/hyunjoo-vending-machine.git
    cd hyunjoo-vending-machine
    ```
 
@@ -66,7 +66,6 @@ pnpm dev
   - 잔액 부족
   - 재고 부족
   - 카드 승인 실패
-  - 잘못된 금액 투입 
+  - 잘못된 금액 투입
 
 ![image](https://github.com/user-attachments/assets/5cf7b8de-bfbe-403d-b501-84866886dd92)
-
